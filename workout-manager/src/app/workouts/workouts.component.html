@@ -1,9 +1,10 @@
 <h2>Mes workouts</h2>
 
 <ul class="workouts">
-    <li *ngFor="let workout of workouts" [class.selected]="workout === selectedWorkout" (click)="onSelect(workout)">
+    <li *ngFor="let workout of workouts">
+        <a routerLink="/detail/{{workout.id}}">
+            <span class="badge">{{workout.id}}</span> {{workout.name}}
+        </a>
         <span class="badge">{{workout.id}}</span> {{workout.name}}
     </li>
 </ul>
-
-<app-workout-detail [workout]="selectedWorkout"></app-workout-detail>
