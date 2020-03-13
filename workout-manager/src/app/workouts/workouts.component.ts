@@ -18,11 +18,6 @@ export class WorkoutsComponent implements OnInit {
     this.getWorkouts();
   }
 
-  onSelect(workout: Workout): void {
-    this.selectedWorkout = workout;
-    this.messageService.add(`WorkoutService: Selected workout id=${workout.id}`);
-  }
-
   getWorkouts(): void {
     this.workoutService.getWorkouts()
         .subscribe(workouts => this.workouts = workouts);

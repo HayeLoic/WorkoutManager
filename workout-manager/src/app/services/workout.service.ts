@@ -16,4 +16,10 @@ export class WorkoutService {
     this.messageService.add('WorkoutService: fetched Workouts');
     return of(WORKOUTS);
   }
+
+  getWorkout(id: number): Observable<Workout> {
+    // TODO: send the message _after_ fetching the workout
+    this.messageService.add(`WorkoutService: fetched workout id=${id}`);
+    return of(WORKOUTS.find(workout => workout.id === id));
+  }
 }
