@@ -13,7 +13,7 @@ export class InMemoryDataService implements InMemoryDataService {
       { id: 4, name: 'Workout 4' },
       { id: 5, name: 'Workout 5' }
     ];
-    return workouts;
+    return {workouts};
   }
 
   genId(workouts: Workout[]): number {
