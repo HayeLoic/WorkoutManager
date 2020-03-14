@@ -10,7 +10,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class WorkoutService {
   private workoutsUrl = 'api/workouts';
-
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getWorkouts(): Observable<Workout[]> {
@@ -26,6 +29,13 @@ export class WorkoutService {
     return this.http.get<Workout>(url).pipe(
       tap(_ => this.log(`fetched workout id=${id}`)),
       catchError(this.handleError<Workout>(`getWorkout id=${id}`))
+    );
+  }
+
+  updateWorkout (workout: Workout): Observable<any> {
+    return this.http.put(this.workoutsUrl, workout, this.httpOptions).pipe(
+      tap(_ => this.log(`updated workout id=${workout.id}`)),
+      catchError(this.handleError<any>('updateWorkout'))
     );
   }
 
