@@ -22,4 +22,18 @@ export class WorkoutsComponent implements OnInit {
     this.workoutService.getWorkouts()
         .subscribe(workouts => this.workouts = workouts);
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.workoutService.addWorkout({ name } as Workout)
+      .subscribe(workout => {
+        this.workouts.push(workout);
+      });
+  }
+
+  delete(workout: Workout): void {
+    this.workouts = this.workouts.filter(h => h !== workout);
+    this.workoutService.deleteWorkout(workout).subscribe();
+  }
 }

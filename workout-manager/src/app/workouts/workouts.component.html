@@ -5,5 +5,15 @@
         <a routerLink="/detail/{{workout.id}}">
             <span class="badge">{{workout.id}}</span> {{workout.name}}
         </a>
+        <button class="delete" title="delete workout" (click)="delete(workout)">x</button>
     </li>
 </ul>
+
+<div>
+    <label>Workout name:
+        <input #workoutName />
+    </label>
+    <button (click)="add(workoutName.value); workoutName.value=''">
+        add
+    </button>
+</div>
