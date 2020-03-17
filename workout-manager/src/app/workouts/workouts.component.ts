@@ -31,4 +31,9 @@ export class WorkoutsComponent implements OnInit {
         this.workouts.push(workout);
       });
   }
+
+  delete(workout: Workout): void {
+    this.workouts = this.workouts.filter(h => h !== workout);
+    this.workoutService.deleteWorkout(workout).subscribe();
+  }
 }
