@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
+import { WorkoutSearchComponent } from './workout-search/workout-search.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InMemoryDataService }  from './services/in-memory-data.service';
     WorkoutsComponent,
     WorkoutDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    WorkoutSearchComponent
   ],
   imports: [
     BrowserModule,

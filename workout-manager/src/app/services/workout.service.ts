@@ -56,6 +56,18 @@ export class WorkoutService {
     );
   }
 
+  searchWorkouts(term: string): Observable<Workout[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Workout[]>(`${this.workoutsUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found workouts matching "${term}"`) :
+         this.log(`no workouts matching "${term}"`)),
+      catchError(this.handleError<Workout[]>('searchWorkouts', []))
+    );
+  }
+
   private log(message: string) {
     this.messageService.add(`WorkoutService: ${message}`);
   }
