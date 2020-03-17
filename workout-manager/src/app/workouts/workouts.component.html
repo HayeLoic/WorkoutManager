@@ -7,3 +7,12 @@
         </a>
     </li>
 </ul>
+
+<div>
+    <label>Workout name:
+      <input #workoutName />
+    </label>
+    <button (click)="add(workoutName.value); workoutName.value=''">
+      add
+    </button>
+  </div>
